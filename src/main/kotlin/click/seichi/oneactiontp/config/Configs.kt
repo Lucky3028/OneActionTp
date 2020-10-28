@@ -11,7 +11,5 @@ abstract class Configs(private val ymlName: String): YamlConfiguration() {
         else createNewFile(plugin, yml)
     }
 
-    private fun createNewFile(plugin: JavaPlugin, yml: File) {
-        plugin.saveResource(yml.name, false)
-    }
+    private fun createNewFile(plugin: JavaPlugin, yml: File) = plugin.saveResource(yml.name, false)
 }
