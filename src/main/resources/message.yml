@@ -1,0 +1,3 @@
+players_only_can_execute: "このコマンドはゲーム内から実行してください。"
+invalid_args: "引数が正しく設定されていません。"
+self_teleport: "自分から自分へのテレポートはできません。"
