@@ -5,7 +5,7 @@ import org.bukkit.plugin.java.JavaPlugin
 import java.io.File
 
 abstract class Configs(private val ymlName: String): YamlConfiguration() {
-    fun a(plugin: JavaPlugin) {
+    fun setup(plugin: JavaPlugin) {
         val yml = File(plugin.dataFolder, "$ymlName.yml")
         if (yml.exists()) this.load(yml)
         else createNewFile(plugin, yml)
