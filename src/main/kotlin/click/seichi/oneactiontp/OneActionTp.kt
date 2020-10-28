@@ -4,7 +4,7 @@ import org.bukkit.plugin.java.JavaPlugin
 
 class OneActionTp : JavaPlugin() {
     companion object {
-        var PLUGIN: OneActionTp? = null
+        lateinit var PLUGIN: OneActionTp
             private set
     }
 
