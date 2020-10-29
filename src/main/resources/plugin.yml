@@ -1,3 +1,12 @@
 name: OneActionTp
 version: @version@
 main: click.seichi.oneactiontp.OneActionTp
+
+commands:
+  tpp:
+    usage: /tpp <playername>
+    description: This command allows player to send a teleport request.
+
+perimissions:
+  oneactiontp.tpp:
+    default: not op

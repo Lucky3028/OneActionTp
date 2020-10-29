@@ -10,7 +10,7 @@ denying_all_req: "指定されたプレイヤーは現在申請を受け付け�
 
 player_not_found: "指定されたMCIDが正しくないか、そのIDのプレイヤーはログインしていません。"
 
-has_sent_req: "すでにそのプレイヤーへの申請を送信しています。"
+has_sent_req: "すでにテレポートを申請しています。"
 
 click_to_accept: "承認するにはここをクリック"
 
