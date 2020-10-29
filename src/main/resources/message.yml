@@ -1,3 +1,32 @@
-players_only_can_execute: "このコマンドはゲーム内から実行してください。"
+# カラーコードの指定には対応していません。
+
+player_only_can_execute: "このコマンドはゲーム内から実行してください。"
+
 invalid_args: "引数が正しく設定されていません。"
+
 self_teleport: "自分から自分へのテレポートはできません。"
+
+denying_all_req: "指定されたプレイヤーは現在申請を受け付けていません。"
+
+player_not_found: "指定されたMCIDが正しくないか、そのIDのプレイヤーはログインしていません。"
+
+has_sent_req: "すでにそのプレイヤーへの申請を送信しています。"
+
+click_to_accept: "承認するにはここをクリック"
+
+click_to_deny: "拒否するにはここをクリック"
+
+hover_to_accept: "承認する"
+
+hover_to_deny: "拒否する"
+
+req_has_arrived:
+  - ""
+  - "テレポート申請が届きました。"
+  - "承認するには「承認する」、拒否するには「拒否する」をクリックしてください。"
+  - "120秒後に自動的に申請は拒否されます。"
+  - ""
+
+req_has_been_sent: "テレポート申請を送信しました。"
+
+req_has_expired: "テレポート申請が無効になりました。"
