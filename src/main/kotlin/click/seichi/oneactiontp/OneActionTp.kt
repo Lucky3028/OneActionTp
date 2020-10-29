@@ -1,7 +1,9 @@
 package click.seichi.oneactiontp
 
+import click.seichi.oneactiontp.command.TppCommand
 import click.seichi.oneactiontp.config.Configs
 import click.seichi.oneactiontp.config.Message
+import org.bukkit.command.CommandExecutor
 import org.bukkit.plugin.java.JavaPlugin
 
 class OneActionTp : JavaPlugin() {
@@ -13,8 +15,12 @@ class OneActionTp : JavaPlugin() {
     override fun onEnable() {
         PLUGIN = this
 
-        setupConfig(
+        setupConfigs(
                 Message
+        )
+
+        registerCommands(
+                "tpp" to TppCommand()
         )
     }
 
@@ -22,5 +28,8 @@ class OneActionTp : JavaPlugin() {
         // Plugin shutdown logic
     }
 
-    private fun setupConfig(vararg configs: Configs) = configs.forEach { it.setup(PLUGIN) }
+    private fun setupConfigs(vararg configs: Configs) = configs.forEach { it.setup(PLUGIN) }
+
+    private fun registerCommands(vararg commands: Pair<String, CommandExecutor>) =
+            commands.forEach { this.getCommand(it.first).executor = it.second }
 }
