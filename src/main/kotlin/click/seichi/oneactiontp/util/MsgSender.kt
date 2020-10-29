@@ -1,4 +1,4 @@
-package click.seichi.oneactiontp.Util
+package click.seichi.oneactiontp.util
 
 import net.md_5.bungee.api.chat.BaseComponent
 import org.bukkit.ChatColor

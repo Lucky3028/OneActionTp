@@ -1,4 +1,4 @@
-package click.seichi.oneactiontp.Util
+package click.seichi.oneactiontp.util
 
 import click.seichi.oneactiontp.OneActionTp
 import org.bukkit.scheduler.BukkitRunnable
