@@ -9,4 +9,4 @@ commands:
 
 perimissions:
   oneactiontp.tpp:
-    default: not op
+    default: true
