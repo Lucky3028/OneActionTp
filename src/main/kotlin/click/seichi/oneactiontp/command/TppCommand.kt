@@ -1,10 +1,10 @@
 package click.seichi.oneactiontp.command
 
-import click.seichi.oneactiontp.util.runTaskLaterAsynchronously
-import click.seichi.oneactiontp.util.sendErrMsg
 import click.seichi.oneactiontp.config.Message
 import click.seichi.oneactiontp.data.RequestsLimitation.readReqLimitState
 import click.seichi.oneactiontp.data.TeleportRequest
+import click.seichi.oneactiontp.util.runTaskLaterAsynchronously
+import click.seichi.oneactiontp.util.sendErrMsg
 import click.seichi.oneactiontp.util.sendMsgs
 import net.md_5.bungee.api.chat.ClickEvent
 import net.md_5.bungee.api.chat.ComponentBuilder
@@ -12,11 +12,15 @@ import net.md_5.bungee.api.chat.HoverEvent
 import net.md_5.bungee.api.chat.TextComponent
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
-import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
+import org.bukkit.command.TabExecutor
 import org.bukkit.entity.Player
 
-class TppCommand : CommandExecutor {
+class TppCommand : TabExecutor {
+    override fun onTabComplete(sender: CommandSender, command: Command, alias: String, args: Array<out String>): MutableList<String> {
+        return mutableListOf()
+    }
+
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
         if (sender !is Player) {
             sender.sendErrMsg(Message.playerOnlyExeCmd)
