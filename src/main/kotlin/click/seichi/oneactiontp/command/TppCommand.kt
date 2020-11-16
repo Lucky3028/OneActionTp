@@ -4,7 +4,6 @@ import click.seichi.oneactiontp.config.Message
 import click.seichi.oneactiontp.data.RequestsLimitation.readReqLimitState
 import click.seichi.oneactiontp.data.TeleportRequest
 import click.seichi.oneactiontp.util.runTaskLaterAsynchronously
-import click.seichi.oneactiontp.util.sendErrMsg
 import click.seichi.oneactiontp.util.sendMsgs
 import net.md_5.bungee.api.chat.ClickEvent
 import net.md_5.bungee.api.chat.ComponentBuilder
@@ -23,30 +22,30 @@ class TppCommand : TabExecutor {
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
         if (sender !is Player) {
-            sender.sendErrMsg(Message.playerOnlyExeCmd)
+            sender.sendMessage(Message.playerOnlyExeCmd)
             return true
         } else if (args.size != 1) {
-            sender.sendErrMsg(Message.invalidArgs)
+            sender.sendMessage(Message.invalidArgs)
             return false
         }
 
         val receiver = Bukkit.getPlayer(args[0])?.also{ receiver ->
             if (receiver == sender) {
-                sender.sendErrMsg(Message.selfTeleport)
+                sender.sendMessage(Message.selfTeleport)
                 return true
             } else if (readReqLimitState(receiver)) {
-                sender.sendErrMsg(Message.denyingAllReqs)
+                sender.sendMessage(Message.denyingAllReqs)
                 return true
             }
         } ?: run {
-            sender.sendErrMsg(Message.playerNotFound)
+            sender.sendMessage(Message.playerNotFound)
             return true
         }
 
         // TODO mutedならsenderにrequest完了を通知するが、receiverにはrequestを表示せず、一定時間後にtpadenyする
 
         if (TeleportRequest.hasSentRequest(sender)) {
-            sender.sendErrMsg(Message.hasSentReq)
+            sender.sendMessage(Message.hasSentReq)
             return true
         }
 

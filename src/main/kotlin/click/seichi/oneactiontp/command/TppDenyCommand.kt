@@ -3,7 +3,6 @@ package click.seichi.oneactiontp.command
 import click.seichi.oneactiontp.config.Message
 import click.seichi.oneactiontp.data.TeleportRequest
 import click.seichi.oneactiontp.data.TeleportRequest.hasAlreadySent
-import click.seichi.oneactiontp.util.sendErrMsg
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
@@ -18,20 +17,20 @@ class TppDenyCommand : TabExecutor {
 
     override fun onCommand(cmdSender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
         if (cmdSender !is Player) {
-            cmdSender.sendErrMsg(Message.playerOnlyExeCmd)
+            cmdSender.sendMessage(Message.playerOnlyExeCmd)
             return true
         } else if (args.size != 1) {
-            cmdSender.sendErrMsg(Message.invalidArgs)
+            cmdSender.sendMessage(Message.invalidArgs)
             return false
         }
 
         val reqSender = Bukkit.getPlayer(args[0]) ?: run {
-            cmdSender.sendErrMsg(Message.playerNotFound)
+            cmdSender.sendMessage(Message.playerNotFound)
             return true
         }
 
         if (!hasAlreadySent(reqSender, cmdSender)) {
-            cmdSender.sendErrMsg(Message.noPendingTppReq)
+            cmdSender.sendMessage(Message.noPendingTppReq)
             return true
         }
 
