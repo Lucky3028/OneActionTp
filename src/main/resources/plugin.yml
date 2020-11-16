@@ -11,7 +11,7 @@ commands:
     usage: /tppdeny <playername>
     permission: oneactiontp.tppdeny
     description: This command allows players to deny the teleport request.
-  tpptoggle:
-    usage: /tpptoggle
-    permission: oneactiontp.tpptoggle
+  tptoggle:
+    usage: /tptoggle
+    permission: oneactiontp.tptoggle
     description: This command allows players to toggle either they accept or deny all requests automatically.

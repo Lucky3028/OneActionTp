@@ -2,7 +2,7 @@ package click.seichi.oneactiontp
 
 import click.seichi.oneactiontp.command.TppCommand
 import click.seichi.oneactiontp.command.TppDenyCommand
-import click.seichi.oneactiontp.command.TppToggleCommand
+import click.seichi.oneactiontp.command.TpToggleCommand
 import click.seichi.oneactiontp.config.Configs
 import click.seichi.oneactiontp.config.Message
 import org.bukkit.command.CommandExecutor
@@ -24,7 +24,7 @@ class OneActionTp : JavaPlugin() {
         registerCommands(
                 "tpp" to TppCommand(),
                 "tppdeny" to TppDenyCommand(),
-                "tpptoggle" to TppToggleCommand()
+                "tptoggle" to TpToggleCommand()
         )
     }
 
