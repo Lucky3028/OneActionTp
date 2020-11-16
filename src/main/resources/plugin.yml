@@ -6,7 +6,12 @@ commands:
   tpp:
     usage: /tpp <playername>
     description: This command allows player to send a teleport request.
+  tppdeny:
+    usage: /tppdeny <playername>
+    description: This command allows player to deny the teleport request.
 
 perimissions:
   oneactiontp.tpp:
+    default: true
+  oneactiontp.tppdeny:
     default: true
