@@ -25,8 +25,7 @@ class TppCommand : TabExecutor {
         if (sender !is Player) {
             sender.sendErrMsg(Message.playerOnlyExeCmd)
             return true
-        }
-        if (args.size != 1) {
+        } else if (args.size != 1) {
             sender.sendErrMsg(Message.invalidArgs)
             return false
         }
