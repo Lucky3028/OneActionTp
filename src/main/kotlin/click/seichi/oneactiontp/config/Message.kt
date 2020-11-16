@@ -2,6 +2,11 @@ package click.seichi.oneactiontp.config
 
 import click.seichi.oneactiontp.util.convertColorCode
 
+/**
+ * message.ymlからそれぞれメッセージを取得する関数をまとめたObject。
+ *
+ * 自動的に[convertColorCode]が適用される。
+ */
 object Message : Configs("message") {
 
     val playerOnlyExeCmd: String by lazy { convertColorCode(getString("player_only_can_execute")) }
