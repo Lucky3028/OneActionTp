@@ -1,7 +1,6 @@
 package click.seichi.oneactiontp.util
 
 import net.md_5.bungee.api.chat.BaseComponent
-import org.bukkit.ChatColor
 import org.bukkit.command.CommandSender
 
 /**
