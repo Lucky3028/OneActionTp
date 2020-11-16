@@ -33,6 +33,7 @@ class TppDenyCommand : TabExecutor {
             cmdSender.sendMessage(Message.noPendingTppReq)
             return true
         }
+        // TODO tpphereコマンドも確認する
 
         TeleportRequest.remove(reqSender, cmdSender)
         reqSender.sendMessage(Message.senderDeniedTppReq)
