@@ -10,6 +10,12 @@ denying_all_req: "指定されたプレイヤーは現在申請を受け付け�
 
 player_not_found: "指定されたMCIDが正しくないか、そのIDのプレイヤーはログインしていません。"
 
+no_pending_tpp_req: "そのプレイヤーからはテレポート申請を受けていません。"
+
+sender_denied_tpp_req: "テレポート申請は拒否されました。"
+
+receiver_deny_tpp_req: "テレポート申請を拒否しました。"
+
 has_sent_req: "すでにテレポートを申請しています。"
 
 click_to_accept: "承認するにはここをクリック"

@@ -27,4 +27,10 @@ object Message : Configs("message") {
     val reqHasBeenSent: String by lazy { getString("req_has_been_sent") }
 
     val reqHasExpired: String by lazy { getString("req_has_expired") }
+
+    val noPendingTppReq: String by lazy { getString("no_pending_tpp_req") }
+
+    val senderDeniedTppReq: String by lazy { getString("sender_denied_tpp_req") }
+
+    val receiverDenyTppReq: String by lazy { getString("receiver_deny_tpp_req") }
 }
