@@ -5,13 +5,13 @@ main: click.seichi.oneactiontp.OneActionTp
 commands:
   tpp:
     usage: /tpp <playername>
-    description: This command allows player to send a teleport request.
+    permission: oneactiontp.tpp
+    description: This command allows players to send a teleport request.
   tppdeny:
     usage: /tppdeny <playername>
-    description: This command allows player to deny the teleport request.
-
-perimissions:
-  oneactiontp.tpp:
-    default: true
-  oneactiontp.tppdeny:
-    default: true
+    permission: oneactiontp.tppdeny
+    description: This command allows players to deny the teleport request.
+  tpptoggle:
+    usage: /tpptoggle
+    permission: oneactiontp.tpptoggle
+    description: This command allows players to toggle either they accept or deny all requests automatically.
