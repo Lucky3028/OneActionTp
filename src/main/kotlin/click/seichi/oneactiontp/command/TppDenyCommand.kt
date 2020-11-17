@@ -2,17 +2,25 @@ package click.seichi.oneactiontp.command
 
 import click.seichi.oneactiontp.config.Message
 import click.seichi.oneactiontp.data.TeleportRequest
+import click.seichi.oneactiontp.data.TeleportRequest.findRequested
 import click.seichi.oneactiontp.data.TeleportRequest.hasAlreadySent
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
 import org.bukkit.command.TabExecutor
 import org.bukkit.entity.Player
+import java.util.*
+
 
 class TppDenyCommand : TabExecutor {
     override fun onTabComplete(sender: CommandSender, command: Command, alias: String, args: Array<out String>): MutableList<String> {
-        // TODO 自分に向けてリクエストを出しているプレイヤーのみサジェスト
-        return mutableListOf()
+        return if (
+                command.name.equals("tppdeny", true)
+                && args.size == 1
+                && sender is Player) {
+            // TODO findRequestedがnullの場合どうなる？
+            findRequested(sender).map { it.name }.toMutableList()
+        } else mutableListOf()
     }
 
     override fun onCommand(cmdSender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
