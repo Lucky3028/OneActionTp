@@ -7,6 +7,10 @@ commands:
     usage: /tpp <playername>
     permission: oneactiontp.tpp
     description: This command allows players to send a teleport request.
+  tppaccept:
+    usage: /tppaccept <playername>
+    permission: oneactiontp.tppdeny
+    description: This command allows players to accept the teleport request.
   tppdeny:
     usage: /tppdeny <playername>
     permission: oneactiontp.tppdeny

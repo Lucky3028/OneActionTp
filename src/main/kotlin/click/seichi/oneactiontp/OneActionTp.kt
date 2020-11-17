@@ -1,5 +1,6 @@
 package click.seichi.oneactiontp
 
+import click.seichi.oneactiontp.command.TppAcceptCommand
 import click.seichi.oneactiontp.command.TppCommand
 import click.seichi.oneactiontp.command.TppDenyCommand
 import click.seichi.oneactiontp.command.TppToggleCommand
@@ -23,6 +24,7 @@ class OneActionTp : JavaPlugin() {
 
         registerCommands(
                 "tpp" to TppCommand(),
+                "tppaccept" to TppAcceptCommand(),
                 "tppdeny" to TppDenyCommand(),
                 "tpptoggle" to TppToggleCommand()
         )
