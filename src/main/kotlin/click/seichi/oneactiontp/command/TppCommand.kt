@@ -44,7 +44,7 @@ class TppCommand : TabExecutor {
 
         // TODO mutedならsenderにrequest完了を通知するが、receiverにはrequestを表示せず、一定時間後にtpadenyする
 
-        if (TeleportRequest.hasSentRequest(sender)) {
+        if (TeleportRequest.hasBeenRequested(receiver)) {
             sender.sendMessage(Message.hasSentReq)
             return true
         }
@@ -66,7 +66,7 @@ class TppCommand : TabExecutor {
 
         // TODO 無効になるまでの時間を設定できるようにする（秒単位）
         runTaskLaterAsynchronously(20 * 120) {
-            if (TeleportRequest.hasAlreadySent(sender, receiver)) {
+            if (TeleportRequest.requestExists(sender, receiver)) {
                 TeleportRequest.remove(sender, receiver)
                 sender.sendMessage(Message.reqHasExpired)
                 receiver.sendMessage(Message.reqHasExpired)
