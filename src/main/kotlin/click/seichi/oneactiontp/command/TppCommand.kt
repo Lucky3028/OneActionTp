@@ -44,8 +44,6 @@ class TppCommand : TabExecutor {
 
         // TODO mutedならsenderにrequest完了を通知するが、receiverにはrequestを表示せず、一定時間後にtpadenyする
 
-        // TODO コマンド実行にintervalを作る
-
         if (TeleportRequest.hasSentRequest(sender)) {
             sender.sendMessage(Message.hasSentReq)
             return true
