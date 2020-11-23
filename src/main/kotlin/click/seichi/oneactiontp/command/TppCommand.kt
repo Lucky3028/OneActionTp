@@ -64,6 +64,7 @@ class TppCommand : TabExecutor {
         receiver.sendMsgs(spaceText, hoverAcceptText, spaceText, hoverDenyText)
         sender.sendMessage(Message.reqHasBeenSent)
 
+        // TODO 無効になるまでの時間を設定できるようにする（秒単位）
         runTaskLaterAsynchronously(20 * 120) {
             if (TeleportRequest.hasAlreadySent(sender, receiver)) {
                 TeleportRequest.remove(sender, receiver)
