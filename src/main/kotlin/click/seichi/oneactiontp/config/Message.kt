@@ -37,6 +37,10 @@ object Message : Configs("message") {
 
     val noPendingTppReq: String by lazy { convertColorCode(getString("no_pending_tpp_req")) }
 
+    val senderAcceptedTppReq: String by lazy { convertColorCode(getString("sender_accepted_tpp_req")) }
+
+    val receiverAcceptTppReq: String by lazy { convertColorCode(getString("receiver_accept_tpp_req")) }
+
     val senderDeniedTppReq: String by lazy { convertColorCode(getString("sender_denied_tpp_req")) }
 
     val receiverDenyTppReq: String by lazy { convertColorCode(getString("receiver_deny_tpp_req")) }

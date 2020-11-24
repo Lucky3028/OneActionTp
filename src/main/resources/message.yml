@@ -10,6 +10,10 @@ player_not_found: "指定されたMCIDが正しくないか、そのIDのプレ�
 
 no_pending_tpp_req: "そのプレイヤーからはテレポート申請を受けていません。"
 
+sender_accepted_tpp_req: "テレポート申請が承認されました。"
+
+receiver_accept_tpp_req: "テレポート申請が承認されました。"
+
 sender_denied_tpp_req: "テレポート申請は拒否されました。"
 
 receiver_deny_tpp_req: "テレポート申請を拒否しました。"
