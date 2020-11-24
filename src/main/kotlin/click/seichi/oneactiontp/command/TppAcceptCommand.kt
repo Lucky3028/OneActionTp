@@ -1,8 +1,11 @@
 package click.seichi.oneactiontp.command
 
+import click.seichi.oneactiontp.OneActionTp.Companion.PLUGIN
+import click.seichi.oneactiontp.config.Config
 import click.seichi.oneactiontp.config.Message
-import click.seichi.oneactiontp.data.TeleportRequest
-import click.seichi.oneactiontp.data.TeleportRequest.hasAlreadySent
+import click.seichi.oneactiontp.cpllection.PendingRequest
+import click.seichi.oneactiontp.cpllection.TeleportRequest
+import click.seichi.oneactiontp.util.runTaskTimer
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
@@ -10,6 +13,9 @@ import org.bukkit.command.TabExecutor
 import org.bukkit.entity.Player
 
 class TppAcceptCommand: TabExecutor {
+    private var taskId = 0
+    private var seconds = Config.secondsUntilTp
+
     override fun onTabComplete(sender: CommandSender, command: Command, alias: String, args: Array<out String>): MutableList<String> {
         return mutableListOf()
     }
@@ -31,7 +37,7 @@ class TppAcceptCommand: TabExecutor {
             return true
         }
 
-        if (!hasAlreadySent(reqSender, cmdSender)) {
+        if (!TeleportRequest.requestExists(reqSender, cmdSender)) {
             cmdSender.sendMessage(Message.noPendingTppReq)
             return true
         }

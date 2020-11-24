@@ -1,8 +1,8 @@
 package click.seichi.oneactiontp.command
 
 import click.seichi.oneactiontp.config.Message
-import click.seichi.oneactiontp.data.RequestsLimitation.readReqLimitState
-import click.seichi.oneactiontp.data.TeleportRequest
+import click.seichi.oneactiontp.cpllection.RequestsLimitation.readReqLimitState
+import click.seichi.oneactiontp.cpllection.TeleportRequest
 import click.seichi.oneactiontp.util.runTaskLaterAsynchronously
 import click.seichi.oneactiontp.util.sendMsgs
 import net.md_5.bungee.api.chat.ClickEvent

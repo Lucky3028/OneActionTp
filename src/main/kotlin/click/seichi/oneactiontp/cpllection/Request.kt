@@ -1,4 +1,4 @@
-package click.seichi.oneactiontp.data
+package click.seichi.oneactiontp.cpllection
 
 import org.bukkit.entity.Player
 
