@@ -19,8 +19,6 @@ class TpAcceptCommand: TabExecutor {
 
     @Suppress("UNREACHABLE_CODE")
     override fun onCommand(cmdSender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
-        TODO("It is a little difficult for me to understand implementation of this command because I hardly have time!")
-
         if (cmdSender !is Player) {
             cmdSender.sendMessage(Message.playerOnlyExeCmd)
             return true
