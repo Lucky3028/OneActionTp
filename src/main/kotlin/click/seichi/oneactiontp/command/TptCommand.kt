@@ -3,6 +3,7 @@ package click.seichi.oneactiontp.command
 import click.seichi.oneactiontp.config.Message
 import click.seichi.oneactiontp.collection.RequestsLimitation.readReqLimitState
 import click.seichi.oneactiontp.collection.TeleportRequest
+import click.seichi.oneactiontp.config.Config
 import click.seichi.oneactiontp.util.runTaskLaterAsynchronously
 import click.seichi.oneactiontp.util.sendMsgs
 import net.md_5.bungee.api.chat.ClickEvent
@@ -64,8 +65,7 @@ class TptCommand : TabExecutor {
         receiver.sendMsgs(spaceText, hoverAcceptText, spaceText, hoverDenyText)
         sender.sendMessage(Message.reqHasBeenSent)
 
-        // TODO 無効になるまでの時間を設定できるようにする（秒単位）
-        runTaskLaterAsynchronously(20 * 120) {
+        runTaskLaterAsynchronously(20 * Config.secondsUntilExpired.toLong() ) {
             if (TeleportRequest.requestExists(sender, receiver)) {
                 TeleportRequest.remove(sender, receiver)
                 sender.sendMessage(Message.reqHasExpired)

@@ -1,1 +1,2 @@
 seconds_until_teleport: 10
+seconds_until_expired: 60
