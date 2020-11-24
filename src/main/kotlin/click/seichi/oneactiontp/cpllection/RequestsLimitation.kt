@@ -14,6 +14,7 @@ object RequestsLimitation {
 
         flagMap[player] = new
 
+        // TODO Messageにする
         if (new) {
             player.sendMessage("${ChatColor.RED}OneActionTPのプレイヤー間テレポート申請をすべて拒否します。")
         } else {
