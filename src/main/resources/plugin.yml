@@ -3,9 +3,9 @@ version: @version@
 main: click.seichi.oneactiontp.OneActionTp
 
 commands:
-  tpp:
-    usage: /tpp <playername>
-    permission: oneactiontp.tpp
+  tpt:
+    usage: /tpt <playername>
+    permission: oneactiontp.tpt
     description: This command allows players to send a teleport request.
   tpaccept:
     usage: /tpaccept <playername>
