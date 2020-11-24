@@ -1,8 +1,8 @@
 package click.seichi.oneactiontp.command
 
 import click.seichi.oneactiontp.config.Message
-import click.seichi.oneactiontp.cpllection.PendingRequest
-import click.seichi.oneactiontp.cpllection.TeleportRequest
+import click.seichi.oneactiontp.collection.PendingRequest
+import click.seichi.oneactiontp.collection.TeleportRequest
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender

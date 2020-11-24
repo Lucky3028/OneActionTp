@@ -1,7 +1,7 @@
 package click.seichi.oneactiontp.command
 
 import click.seichi.oneactiontp.config.Message
-import click.seichi.oneactiontp.cpllection.RequestsLimitation
+import click.seichi.oneactiontp.collection.RequestsLimitation
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender

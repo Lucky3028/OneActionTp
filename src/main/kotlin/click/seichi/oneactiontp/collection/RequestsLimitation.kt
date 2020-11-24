@@ -1,4 +1,4 @@
-package click.seichi.oneactiontp.cpllection
+package click.seichi.oneactiontp.collection
 
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
