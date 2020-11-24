@@ -47,7 +47,7 @@ class TppAcceptCommand: TabExecutor {
         cmdSender.sendMessage(Message.receiverAcceptTppReq)
 
         object : BukkitRunnable() {
-            var seconds = Config.secondsUntilTp
+            private var seconds = Config.secondsUntilTp
 
             override fun run() {
                 if (--seconds > 0) {
@@ -59,6 +59,7 @@ class TppAcceptCommand: TabExecutor {
                     this.cancel()
 
                     PendingRequest.remove(reqSender, cmdSender)
+                    // TODO currently-teleport message
                     reqSender.teleport(cmdSender.location)
                 }
             }
