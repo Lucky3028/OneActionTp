@@ -44,4 +44,8 @@ object Message : Configs("message") {
     val senderDeniedTppReq: String by lazy { convertColorCode(getString("sender_denied_tpp_req")) }
 
     val receiverDenyTppReq: String by lazy { convertColorCode(getString("receiver_deny_tpp_req")) }
+
+    val denyAllRequests: String by lazy { convertColorCode(getString("deny_all_requests")) }
+
+    val allowAllRequests: String by lazy { convertColorCode(getString("allow_all_requests")) }
 }

@@ -38,3 +38,7 @@ req_has_arrived:
 req_has_been_sent: "テレポート申請を送信しました。"
 
 req_has_expired: "テレポート申請が無効になりました。"
+
+deny_all_requests: "OneActionTPのプレイヤー間テレポート申請をすべて拒否します。"
+
+allow_all_requests: "OneActionTPのプレイヤー間テレポート申請をすべて許可します。"

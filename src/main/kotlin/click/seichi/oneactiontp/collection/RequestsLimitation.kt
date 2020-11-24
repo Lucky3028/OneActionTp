@@ -1,5 +1,6 @@
 package click.seichi.oneactiontp.collection
 
+import click.seichi.oneactiontp.config.Message
 import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 
@@ -14,8 +15,7 @@ object RequestsLimitation {
 
         flagMap[player] = new
 
-        // TODO Messageにする
-        if (new) player.sendMessage("${ChatColor.RED}OneActionTPのプレイヤー間テレポート申請をすべて拒否します。")
-        else player.sendMessage("${ChatColor.GREEN}OneActionTPのプレイヤー間テレポート申請をすべて許可します。")
+        if (new) player.sendMessage(Message.denyAllRequests)
+        else player.sendMessage(Message.allowAllRequests)
     }
 }
