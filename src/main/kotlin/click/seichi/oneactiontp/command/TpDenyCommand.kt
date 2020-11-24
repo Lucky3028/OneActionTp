@@ -8,7 +8,7 @@ import org.bukkit.command.CommandSender
 import org.bukkit.command.TabExecutor
 import org.bukkit.entity.Player
 
-class TppDenyCommand : TabExecutor {
+class TpDenyCommand : TabExecutor {
     override fun onTabComplete(sender: CommandSender, command: Command, alias: String, args: Array<out String>): MutableList<String> {
         return if (
                 command.name.equals("tppdeny", true)

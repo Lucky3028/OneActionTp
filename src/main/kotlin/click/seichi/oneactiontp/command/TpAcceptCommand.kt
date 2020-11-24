@@ -12,7 +12,7 @@ import org.bukkit.command.TabExecutor
 import org.bukkit.entity.Player
 import org.bukkit.scheduler.BukkitRunnable
 
-class TppAcceptCommand: TabExecutor {
+class TpAcceptCommand: TabExecutor {
     override fun onTabComplete(sender: CommandSender, command: Command, alias: String, args: Array<out String>): MutableList<String> {
         return mutableListOf()
     }
