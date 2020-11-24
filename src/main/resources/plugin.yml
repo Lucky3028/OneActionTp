@@ -15,6 +15,10 @@ commands:
     usage: /tpdeny <playername>
     permission: oneactiontp.tpdeny
     description: This command allows players to deny the teleport request.
+  tpcancel:
+    usage: /tpcancel <playername>
+    permission: oneactiontp.tpcancel
+    description: This command allows players to cancel the teleport request.
   tptoggle:
     usage: /tptoggle
     permission: oneactiontp.tptoggle
