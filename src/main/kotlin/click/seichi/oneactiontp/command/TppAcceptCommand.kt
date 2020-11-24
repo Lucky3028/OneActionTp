@@ -5,16 +5,14 @@ import click.seichi.oneactiontp.config.Config
 import click.seichi.oneactiontp.config.Message
 import click.seichi.oneactiontp.cpllection.PendingRequest
 import click.seichi.oneactiontp.cpllection.TeleportRequest
-import click.seichi.oneactiontp.util.runTaskTimer
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
 import org.bukkit.command.TabExecutor
 import org.bukkit.entity.Player
+import org.bukkit.scheduler.BukkitRunnable
 
 class TppAcceptCommand: TabExecutor {
-    private var seconds = Config.secondsUntilTp
-
     override fun onTabComplete(sender: CommandSender, command: Command, alias: String, args: Array<out String>): MutableList<String> {
         return mutableListOf()
     }
@@ -48,22 +46,23 @@ class TppAcceptCommand: TabExecutor {
         reqSender.sendMessage(Message.senderAcceptedTppReq)
         cmdSender.sendMessage(Message.receiverAcceptTppReq)
 
-        PendingRequest.addTask(reqSender, runTaskTimer(0L, 20L) {
-            if (this.seconds >= 1) {
-                if (PendingRequest.requestExists(reqSender, cmdSender)) {
-                    this.seconds--
+        object : BukkitRunnable() {
+            var seconds = Config.secondsUntilTp
+
+            override fun run() {
+                if (--seconds > 0) {
+                    if (!PendingRequest.requestExists(reqSender, cmdSender)) {
+                        this.cancel()
+                        // TODO Player-moved-before-tp message
+                    }
+                } else {
+                    this.cancel()
+
+                    PendingRequest.remove(reqSender, cmdSender)
+                    reqSender.teleport(cmdSender.location)
                 }
-                else {
-                    PLUGIN.server.scheduler.cancelTask(PendingRequest.getTaskId(reqSender))
-                    // TODO Player-moved-before-tp message
-                }
-            } else {
-                PLUGIN.server.scheduler.cancelTask(PendingRequest.getTaskId(reqSender))
-                PendingRequest.remove(reqSender, cmdSender)
-                PendingRequest.removeTask(reqSender)
-                reqSender.teleport(cmdSender.location)
             }
-        }.taskId)
+        }.runTaskTimer(PLUGIN, 0L, 20L)
 
         return true
     }

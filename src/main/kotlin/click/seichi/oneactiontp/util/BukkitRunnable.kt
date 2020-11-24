@@ -11,7 +11,7 @@ import org.bukkit.scheduler.BukkitTask
  *
  * @param delay 待機時間（tick）
  * @param task 実行する関数
- * @return 指定された[BukkitRunnable.run]が設定された[BukkitTask]
+ * @return [BukkitTask]
  */
 fun runTaskLaterAsynchronously(delay: Long, task: () -> Unit): BukkitTask {
     return object : BukkitRunnable() {
@@ -19,12 +19,4 @@ fun runTaskLaterAsynchronously(delay: Long, task: () -> Unit): BukkitTask {
             task()
         }
     }.runTaskLaterAsynchronously(OneActionTp.PLUGIN, delay)
-}
-
-fun runTaskTimer(delay: Long, period: Long, task: () -> Unit): BukkitTask {
-    return object : BukkitRunnable() {
-        override fun run() {
-            task()
-        }
-    }.runTaskTimer(OneActionTp.PLUGIN, delay, period)
 }
