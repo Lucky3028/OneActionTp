@@ -44,6 +44,26 @@ class TppAcceptCommand: TabExecutor {
         // TODO tpphereコマンドも確認する
 
         TeleportRequest.remove(reqSender, cmdSender)
+        PendingRequest.add(reqSender, cmdSender)
+
+        reqSender.sendMessage(Message.senderAcceptedTppReq)
+        cmdSender.sendMessage(Message.receiverAcceptTppReq)
+
+        this.taskId = runTaskTimer(0L, 20L) {
+            if (this.seconds >= 1) {
+                if (PendingRequest.requestExists(reqSender, cmdSender)) {
+                    this.seconds--
+                }
+                else {
+                    PLUGIN.server.scheduler.cancelTask(this.taskId)
+                    // TODO Player-moved-before-tp message
+                }
+            } else {
+                PLUGIN.server.scheduler.cancelTask(this.taskId)
+                PendingRequest.remove(reqSender, cmdSender)
+                reqSender.teleport(cmdSender.location)
+            }
+        }.taskId
 
         return true
     }
