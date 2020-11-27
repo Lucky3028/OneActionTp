@@ -1,9 +1,11 @@
 package click.seichi.oneactiontp.collection
 
 import click.seichi.oneactiontp.config.Message
-import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 
+/**
+ * 自分宛ての申請をすべて許可するか拒否するかのトグル状況を保持する`map`を操作するobject。
+ */
 object RequestsLimitation {
     private val flagMap = mutableMapOf<Player, Boolean>()
 
