@@ -20,3 +20,6 @@ fun runTaskLaterAsynchronously(delay: Long, task: () -> Unit): BukkitTask {
         }
     }.runTaskLaterAsynchronously(OneActionTp.PLUGIN, delay)
 }
+
+fun runTaskTimer(delay: Long, period: Long, task: BukkitRunnable): BukkitTask
+    = task.runTaskTimer(OneActionTp.PLUGIN, delay, period)

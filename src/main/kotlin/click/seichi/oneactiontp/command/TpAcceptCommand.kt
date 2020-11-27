@@ -1,10 +1,11 @@
 package click.seichi.oneactiontp.command
 
 import click.seichi.oneactiontp.OneActionTp.Companion.PLUGIN
-import click.seichi.oneactiontp.config.Config
-import click.seichi.oneactiontp.config.Message
 import click.seichi.oneactiontp.collection.PendingRequest
 import click.seichi.oneactiontp.collection.TeleportRequest
+import click.seichi.oneactiontp.config.Config
+import click.seichi.oneactiontp.config.Message
+import click.seichi.oneactiontp.util.runTaskTimer
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
@@ -44,7 +45,7 @@ class TpAcceptCommand: TabExecutor {
         reqSender.sendMessage(Message.senderAcceptedTppReq)
         cmdSender.sendMessage(Message.receiverAcceptTppReq)
 
-        object : BukkitRunnable() {
+        runTaskTimer(0L, 20L, object : BukkitRunnable() {
             private var seconds = Config.secondsUntilTp
 
             override fun run() {
@@ -61,7 +62,7 @@ class TpAcceptCommand: TabExecutor {
                     reqSender.teleport(cmdSender.location)
                 }
             }
-        }.runTaskTimer(PLUGIN, 0L, 20L)
+        })
 
         return true
     }
