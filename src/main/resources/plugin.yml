@@ -5,7 +5,13 @@ main: click.seichi.oneactiontp.OneActionTp
 commands:
   tpt:
     usage: /tpt <playername>
+    aliases: tpthere
     permission: oneactiontp.tpt
+    description: This command allows players to send a teleport request.
+  tph:
+    usage: /tph <playername>
+    aliases: tphere
+    permission: oneactiontp.tph
     description: This command allows players to send a teleport request.
   tpaccept:
     usage: /tpaccept <playername>

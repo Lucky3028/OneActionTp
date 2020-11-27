@@ -21,6 +21,7 @@ class OneActionTp : JavaPlugin() {
 
         registerCommands(
                 "tpt" to TptCommand(),
+                "tph" to TphCommand(),
                 "tpaccept" to TpAcceptCommand(),
                 "tpdeny" to TpDenyCommand(),
                 "tpcancel" to TpCancelCommand(),
