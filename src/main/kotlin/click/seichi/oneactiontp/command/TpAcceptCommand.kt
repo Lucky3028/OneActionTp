@@ -1,6 +1,5 @@
 package click.seichi.oneactiontp.command
 
-import click.seichi.oneactiontp.OneActionTp.Companion.PLUGIN
 import click.seichi.oneactiontp.collection.PendingRequest
 import click.seichi.oneactiontp.collection.TeleportRequest
 import click.seichi.oneactiontp.config.Config
@@ -18,7 +17,6 @@ class TpAcceptCommand: TabExecutor {
         return mutableListOf()
     }
 
-    @Suppress("UNREACHABLE_CODE")
     override fun onCommand(cmdSender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
         if (cmdSender !is Player) {
             cmdSender.sendMessage(Message.playerOnlyExeCmd)
