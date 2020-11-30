@@ -1,7 +1,7 @@
 package click.seichi.oneactiontp.command
 
 import click.seichi.oneactiontp.collection.PendingRequest
-import click.seichi.oneactiontp.collection.TeleportRequest
+import click.seichi.oneactiontp.collection.TeleportThereRequest
 import click.seichi.oneactiontp.config.Config
 import click.seichi.oneactiontp.config.Message
 import click.seichi.oneactiontp.util.runTaskTimer
@@ -31,13 +31,13 @@ class TpAcceptCommand: TabExecutor {
             return true
         }
 
-        if (!TeleportRequest.requestExists(reqSender, cmdSender)) {
+        if (!TeleportThereRequest.requestExists(reqSender, cmdSender)) {
             cmdSender.sendMessage(Message.noPendingTppReq)
             return true
         }
         // TODO tpphereコマンドも確認する
 
-        TeleportRequest.remove(reqSender, cmdSender)
+        TeleportThereRequest.remove(reqSender, cmdSender)
         PendingRequest.add(reqSender, cmdSender)
 
         reqSender.sendMessage(Message.senderAcceptedTppReq)

@@ -1,7 +1,7 @@
 package click.seichi.oneactiontp.command
 
 import click.seichi.oneactiontp.config.Message
-import click.seichi.oneactiontp.collection.TeleportRequest
+import click.seichi.oneactiontp.collection.TeleportThereRequest
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
@@ -15,7 +15,7 @@ class TpDenyCommand : TabExecutor {
                 && args.size == 1
                 && sender is Player) {
             // TODO findBeenRequestedがEmptyの場合どうなる？
-            TeleportRequest.findBeenRequested(sender).map { it.name }.toMutableList()
+            TeleportThereRequest.findBeenRequested(sender).map { it.name }.toMutableList()
         } else mutableListOf()
     }
 
@@ -33,13 +33,13 @@ class TpDenyCommand : TabExecutor {
             return true
         }
 
-        if (!TeleportRequest.requestExists(reqSender, cmdSender)) {
+        if (!TeleportThereRequest.requestExists(reqSender, cmdSender)) {
             cmdSender.sendMessage(Message.noPendingTppReq)
             return true
         }
         // TODO tpphereコマンドも確認する
 
-        TeleportRequest.remove(reqSender, cmdSender)
+        TeleportThereRequest.remove(reqSender, cmdSender)
         reqSender.sendMessage(Message.senderDeniedTppReq)
         cmdSender.sendMessage(Message.receiverDenyTppReq)
 

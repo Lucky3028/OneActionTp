@@ -2,7 +2,7 @@ package click.seichi.oneactiontp.command
 
 import click.seichi.oneactiontp.config.Message
 import click.seichi.oneactiontp.collection.PendingRequest
-import click.seichi.oneactiontp.collection.TeleportRequest
+import click.seichi.oneactiontp.collection.TeleportThereRequest
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
@@ -30,7 +30,7 @@ class TpCancelCommand: TabExecutor {
 
         if (requestExists(cmdSender, reqSender)) {
             // TODO 申請が申請者によって取り消されましたを両方に送る
-            TeleportRequest.remove(cmdSender, reqSender)
+            TeleportThereRequest.remove(cmdSender, reqSender)
             PendingRequest.remove(cmdSender, reqSender)
         } else {
             cmdSender.sendMessage(Message.noPendingTppReq)
@@ -41,5 +41,5 @@ class TpCancelCommand: TabExecutor {
     }
 
     private fun requestExists(sender: Player, receiver: Player) =
-            TeleportRequest.requestExists(sender, receiver) || PendingRequest.requestExists(sender, receiver)
+            TeleportThereRequest.requestExists(sender, receiver) || PendingRequest.requestExists(sender, receiver)
 }

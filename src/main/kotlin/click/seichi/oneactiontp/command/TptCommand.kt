@@ -2,7 +2,7 @@ package click.seichi.oneactiontp.command
 
 import click.seichi.oneactiontp.config.Message
 import click.seichi.oneactiontp.collection.RequestsLimitation.readReqLimitState
-import click.seichi.oneactiontp.collection.TeleportRequest
+import click.seichi.oneactiontp.collection.TeleportThereRequest
 import click.seichi.oneactiontp.config.Config
 import click.seichi.oneactiontp.util.runTaskLaterAsynchronously
 import click.seichi.oneactiontp.util.sendMsgs
@@ -45,12 +45,12 @@ class TptCommand : TabExecutor {
 
         // TODO mutedならsenderにrequest完了を通知するが、receiverにはrequestを表示せず、一定時間後にtpadenyする
 
-        if (TeleportRequest.hasRequested(sender)) {
+        if (TeleportThereRequest.hasRequested(sender)) {
             sender.sendMessage(Message.hasSentReq)
             return true
         }
 
-        TeleportRequest.add(sender, receiver)
+        TeleportThereRequest.add(sender, receiver)
 
         val hoverAcceptText = TextComponent(Message.clickToAccept).apply {
             this.hoverEvent = HoverEvent(HoverEvent.Action.SHOW_TEXT, ComponentBuilder(Message.hoverToAccept).create())
@@ -66,8 +66,8 @@ class TptCommand : TabExecutor {
         sender.sendMessage(Message.reqHasBeenSent)
 
         runTaskLaterAsynchronously(20 * Config.secondsUntilExpired.toLong() ) {
-            if (TeleportRequest.requestExists(sender, receiver)) {
-                TeleportRequest.remove(sender, receiver)
+            if (TeleportThereRequest.requestExists(sender, receiver)) {
+                TeleportThereRequest.remove(sender, receiver)
                 sender.sendMessage(Message.reqHasExpired)
                 receiver.sendMessage(Message.reqHasExpired)
             }
