@@ -1,15 +1,9 @@
 package click.seichi.oneactiontp.command
 
-import click.seichi.oneactiontp.config.Message
 import click.seichi.oneactiontp.collection.RequestsLimitation.readReqLimitState
 import click.seichi.oneactiontp.collection.TeleportThereRequest
-import click.seichi.oneactiontp.config.Config
-import click.seichi.oneactiontp.util.runTaskLaterAsynchronously
-import click.seichi.oneactiontp.util.sendMsgs
-import net.md_5.bungee.api.chat.ClickEvent
-import net.md_5.bungee.api.chat.ComponentBuilder
-import net.md_5.bungee.api.chat.HoverEvent
-import net.md_5.bungee.api.chat.TextComponent
+import click.seichi.oneactiontp.config.Message
+import click.seichi.oneactiontp.util.*
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
@@ -52,26 +46,11 @@ class TptCommand : TabExecutor {
 
         TeleportThereRequest.add(sender, receiver)
 
-        val hoverAcceptText = TextComponent(Message.clickToAccept).apply {
-            this.hoverEvent = HoverEvent(HoverEvent.Action.SHOW_TEXT, ComponentBuilder(Message.hoverToAccept).create())
-            this.clickEvent = ClickEvent(ClickEvent.Action.RUN_COMMAND, "/tppaccept ${sender.name}")
-        }
-        val hoverDenyText = TextComponent(Message.clickToDeny).apply {
-            this.hoverEvent = HoverEvent(HoverEvent.Action.SHOW_TEXT, ComponentBuilder(Message.hoverToDeny).create())
-            this.clickEvent = ClickEvent(ClickEvent.Action.RUN_COMMAND, "/tppdeny ${sender.name}")
-        }
-        val spaceText = TextComponent("     ")
         Message.reqHasArrived.forEach { receiver.sendMessage(it) }
-        receiver.sendMsgs(spaceText, hoverAcceptText, spaceText, hoverDenyText)
+        receiver.sendMsgs(spaceText, hoverAcceptText(sender.name), spaceText, hoverDenyText(sender.name))
         sender.sendMessage(Message.reqHasBeenSent)
 
-        runTaskLaterAsynchronously(20 * Config.secondsUntilExpired.toLong() ) {
-            if (TeleportThereRequest.requestExists(sender, receiver)) {
-                TeleportThereRequest.remove(sender, receiver)
-                sender.sendMessage(Message.reqHasExpired)
-                receiver.sendMessage(Message.reqHasExpired)
-            }
-        }
+        makeRequestExpired(sender, receiver, TeleportThereRequest)
 
         return true
     }

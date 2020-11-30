@@ -1,6 +1,10 @@
 package click.seichi.oneactiontp.util
 
 import click.seichi.oneactiontp.OneActionTp
+import click.seichi.oneactiontp.collection.Request
+import click.seichi.oneactiontp.config.Config
+import click.seichi.oneactiontp.config.Message
+import org.bukkit.entity.Player
 import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.scheduler.BukkitTask
 
@@ -31,3 +35,19 @@ fun runTaskLaterAsynchronously(delay: Long, task: () -> Unit): BukkitTask {
  */
 fun runTaskTimer(delay: Long, period: Long, task: BukkitRunnable): BukkitTask
     = task.runTaskTimer(OneActionTp.PLUGIN, delay, period)
+
+/**
+ * テレポート申請が一定時間経過後に無効になるという処理を予約しておく処理を共通化するための関数。
+ * @param sender 申請の送信者。テレポートする側とは限らない
+ * @param receiver 申請の受信者。テレポートされる側とは限らない
+ * @param request [Request]を継承しているもの
+ * @return [BukkitTask]
+ */
+fun makeRequestExpired(sender: Player, receiver: Player, request: Request): BukkitTask =
+        runTaskLaterAsynchronously(20 * Config.secondsUntilExpired.toLong() ) {
+            if (request.requestExists(sender, receiver)) {
+                request.remove(sender, receiver)
+                sender.sendMessage(Message.reqHasExpired)
+                receiver.sendMessage(Message.reqHasExpired)
+            }
+        }
