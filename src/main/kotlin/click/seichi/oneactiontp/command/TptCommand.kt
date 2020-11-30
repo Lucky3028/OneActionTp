@@ -45,7 +45,7 @@ class TptCommand : TabExecutor {
 
         // TODO mutedならsenderにrequest完了を通知するが、receiverにはrequestを表示せず、一定時間後にtpadenyする
 
-        if (TeleportRequest.hasBeenRequested(receiver)) {
+        if (TeleportRequest.hasRequested(receiver)) {
             sender.sendMessage(Message.hasSentReq)
             return true
         }
